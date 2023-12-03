@@ -1,4 +1,9 @@
 
+import 'package:amplify_api/amplify_api.dart';
+import 'package:amplify_auth_cognito/amplify_auth_cognito.dart';
+import 'package:amplify_flutter/amplify_flutter.dart';
+import 'package:chatapp_amplify/amplifyconfiguration.dart';
+import 'package:chatapp_amplify/models/ModelProvider.dart';
 import 'package:chatapp_amplify/providers/message_provider.dart';
 import 'package:chatapp_amplify/providers/user_provider.dart';
 import 'package:chatapp_amplify/screens/welcome/welcome_screen.dart';
@@ -8,7 +13,7 @@ import 'package:provider/provider.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-
+  await configureAmplify();
   runApp(
     MultiProvider(
       providers: [
@@ -18,6 +23,18 @@ Future<void> main() async {
       child: const MyApp(),
     ),
   );
+}
+
+Future<void> configureAmplify() async {
+  try {
+    final api = AmplifyAPI(modelProvider: ModelProvider.instance);
+    final auth = AmplifyAuthCognito();
+    await Amplify.addPlugins([api, auth]);
+    await Amplify.configure(amplifyconfig);
+    safePrint("Amplify configured successfully");
+  } catch (e) {
+    safePrint("Error configuring Amplify: $e");
+  }
 }
 
 class MyApp extends StatelessWidget {
