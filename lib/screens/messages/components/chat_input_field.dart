@@ -1,3 +1,4 @@
+import 'package:chatapp_amplify/screens/messages/components/message_text_field.dart';
 import 'package:flutter/material.dart';
 
 import '../../../constants.dart';
@@ -50,11 +51,9 @@ class ChatInputField extends StatelessWidget {
                     ),
                     const SizedBox(width: defaultPadding / 4),
                     const Expanded(
-                      child: TextField(
-                        decoration: InputDecoration(
-                          hintText: "Type message",
-                          border: InputBorder.none,
-                        ),
+                      child: Form(
+
+                        child: MessageTextField(),
                       ),
                     ),
                     Icon(
@@ -84,3 +83,4 @@ class ChatInputField extends StatelessWidget {
     );
   }
 }
+
