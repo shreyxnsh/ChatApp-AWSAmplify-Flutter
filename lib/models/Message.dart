@@ -19,13 +19,12 @@
 
 // ignore_for_file: public_member_api_docs, annotate_overrides, dead_code, dead_codepublic_member_api_docs, depend_on_referenced_packages, file_names, library_private_types_in_public_api, no_leading_underscores_for_library_prefixes, no_leading_underscores_for_local_identifiers, non_constant_identifier_names, null_check_on_nullable_type_parameter, prefer_adjacent_string_concatenation, prefer_const_constructors, prefer_if_null_operators, prefer_interpolation_to_compose_strings, slash_for_doc_comments, sort_child_properties_last, unnecessary_const, unnecessary_constructor_name, unnecessary_late, unnecessary_new, unnecessary_null_aware_assignments, unnecessary_nullable_for_final_variable_declarations, unnecessary_string_interpolations, use_build_context_synchronously
 
-import 'package:amplify_core/amplify_core.dart';
-import 'package:flutter/foundation.dart';
+import 'ModelProvider.dart';
+import 'package:amplify_core/amplify_core.dart' as amplify_core;
 
 
 /** This is an auto generated class representing the Message type in your schema. */
-@immutable
-class Message extends Model {
+class Message extends amplify_core.Model {
   static const classType = const _MessageModelType();
   final String id;
   final String? _userId;
@@ -33,7 +32,7 @@ class Message extends Model {
   final String? _message;
   final String? _type;
   final String? _createdAt;
-  final TemporalDateTime? _updatedAt;
+  final amplify_core.TemporalDateTime? _updatedAt;
 
   @override
   getInstanceType() => classType;
@@ -52,10 +51,10 @@ class Message extends Model {
     try {
       return _userId!;
     } catch(e) {
-      throw new AmplifyCodeGenModelException(
-          AmplifyExceptionMessages.codeGenRequiredFieldForceCastExceptionMessage,
+      throw amplify_core.AmplifyCodeGenModelException(
+          amplify_core.AmplifyExceptionMessages.codeGenRequiredFieldForceCastExceptionMessage,
           recoverySuggestion:
-            AmplifyExceptionMessages.codeGenRequiredFieldForceCastRecoverySuggestion,
+            amplify_core.AmplifyExceptionMessages.codeGenRequiredFieldForceCastRecoverySuggestion,
           underlyingException: e.toString()
           );
     }
@@ -65,10 +64,10 @@ class Message extends Model {
     try {
       return _username!;
     } catch(e) {
-      throw new AmplifyCodeGenModelException(
-          AmplifyExceptionMessages.codeGenRequiredFieldForceCastExceptionMessage,
+      throw amplify_core.AmplifyCodeGenModelException(
+          amplify_core.AmplifyExceptionMessages.codeGenRequiredFieldForceCastExceptionMessage,
           recoverySuggestion:
-            AmplifyExceptionMessages.codeGenRequiredFieldForceCastRecoverySuggestion,
+            amplify_core.AmplifyExceptionMessages.codeGenRequiredFieldForceCastRecoverySuggestion,
           underlyingException: e.toString()
           );
     }
@@ -78,10 +77,10 @@ class Message extends Model {
     try {
       return _message!;
     } catch(e) {
-      throw new AmplifyCodeGenModelException(
-          AmplifyExceptionMessages.codeGenRequiredFieldForceCastExceptionMessage,
+      throw amplify_core.AmplifyCodeGenModelException(
+          amplify_core.AmplifyExceptionMessages.codeGenRequiredFieldForceCastExceptionMessage,
           recoverySuggestion:
-            AmplifyExceptionMessages.codeGenRequiredFieldForceCastRecoverySuggestion,
+            amplify_core.AmplifyExceptionMessages.codeGenRequiredFieldForceCastRecoverySuggestion,
           underlyingException: e.toString()
           );
     }
@@ -91,10 +90,10 @@ class Message extends Model {
     try {
       return _type!;
     } catch(e) {
-      throw new AmplifyCodeGenModelException(
-          AmplifyExceptionMessages.codeGenRequiredFieldForceCastExceptionMessage,
+      throw amplify_core.AmplifyCodeGenModelException(
+          amplify_core.AmplifyExceptionMessages.codeGenRequiredFieldForceCastExceptionMessage,
           recoverySuggestion:
-            AmplifyExceptionMessages.codeGenRequiredFieldForceCastRecoverySuggestion,
+            amplify_core.AmplifyExceptionMessages.codeGenRequiredFieldForceCastRecoverySuggestion,
           underlyingException: e.toString()
           );
     }
@@ -104,16 +103,16 @@ class Message extends Model {
     try {
       return _createdAt!;
     } catch(e) {
-      throw new AmplifyCodeGenModelException(
-          AmplifyExceptionMessages.codeGenRequiredFieldForceCastExceptionMessage,
+      throw amplify_core.AmplifyCodeGenModelException(
+          amplify_core.AmplifyExceptionMessages.codeGenRequiredFieldForceCastExceptionMessage,
           recoverySuggestion:
-            AmplifyExceptionMessages.codeGenRequiredFieldForceCastRecoverySuggestion,
+            amplify_core.AmplifyExceptionMessages.codeGenRequiredFieldForceCastRecoverySuggestion,
           underlyingException: e.toString()
           );
     }
   }
   
-  TemporalDateTime? get updatedAt {
+  amplify_core.TemporalDateTime? get updatedAt {
     return _updatedAt;
   }
   
@@ -121,7 +120,7 @@ class Message extends Model {
   
   factory Message({String? id, required String userId, required String username, required String message, required String type, required String createdAt}) {
     return Message._internal(
-      id: id == null ? UUID.getUUID() : id,
+      id: id == null ? amplify_core.UUID.getUUID() : id,
       userId: userId,
       username: username,
       message: message,
@@ -175,6 +174,23 @@ class Message extends Model {
       createdAt: createdAt ?? this.createdAt);
   }
   
+  Message copyWithModelFieldValues({
+    ModelFieldValue<String>? userId,
+    ModelFieldValue<String>? username,
+    ModelFieldValue<String>? message,
+    ModelFieldValue<String>? type,
+    ModelFieldValue<String>? createdAt
+  }) {
+    return Message._internal(
+      id: id,
+      userId: userId == null ? this.userId : userId.value,
+      username: username == null ? this.username : username.value,
+      message: message == null ? this.message : message.value,
+      type: type == null ? this.type : type.value,
+      createdAt: createdAt == null ? this.createdAt : createdAt.value
+    );
+  }
+  
   Message.fromJson(Map<String, dynamic> json)  
     : id = json['id'],
       _userId = json['userId'],
@@ -182,82 +198,88 @@ class Message extends Model {
       _message = json['message'],
       _type = json['type'],
       _createdAt = json['createdAt'],
-      _updatedAt = json['updatedAt'] != null ? TemporalDateTime.fromString(json['updatedAt']) : null;
+      _updatedAt = json['updatedAt'] != null ? amplify_core.TemporalDateTime.fromString(json['updatedAt']) : null;
   
   Map<String, dynamic> toJson() => {
     'id': id, 'userId': _userId, 'username': _username, 'message': _message, 'type': _type, 'createdAt': _createdAt, 'updatedAt': _updatedAt?.format()
   };
   
   Map<String, Object?> toMap() => {
-    'id': id, 'userId': _userId, 'username': _username, 'message': _message, 'type': _type, 'createdAt': _createdAt, 'updatedAt': _updatedAt
+    'id': id,
+    'userId': _userId,
+    'username': _username,
+    'message': _message,
+    'type': _type,
+    'createdAt': _createdAt,
+    'updatedAt': _updatedAt
   };
 
-  static final QueryModelIdentifier<MessageModelIdentifier> MODEL_IDENTIFIER = QueryModelIdentifier<MessageModelIdentifier>();
-  static final QueryField ID = QueryField(fieldName: "id");
-  static final QueryField USERID = QueryField(fieldName: "userId");
-  static final QueryField USERNAME = QueryField(fieldName: "username");
-  static final QueryField MESSAGE = QueryField(fieldName: "message");
-  static final QueryField TYPE = QueryField(fieldName: "type");
-  static final QueryField CREATEDAT = QueryField(fieldName: "createdAt");
-  static var schema = Model.defineSchema(define: (ModelSchemaDefinition modelSchemaDefinition) {
+  static final amplify_core.QueryModelIdentifier<MessageModelIdentifier> MODEL_IDENTIFIER = amplify_core.QueryModelIdentifier<MessageModelIdentifier>();
+  static final ID = amplify_core.QueryField(fieldName: "id");
+  static final USERID = amplify_core.QueryField(fieldName: "userId");
+  static final USERNAME = amplify_core.QueryField(fieldName: "username");
+  static final MESSAGE = amplify_core.QueryField(fieldName: "message");
+  static final TYPE = amplify_core.QueryField(fieldName: "type");
+  static final CREATEDAT = amplify_core.QueryField(fieldName: "createdAt");
+  static var schema = amplify_core.Model.defineSchema(define: (amplify_core.ModelSchemaDefinition modelSchemaDefinition) {
     modelSchemaDefinition.name = "Message";
     modelSchemaDefinition.pluralName = "Messages";
     
     modelSchemaDefinition.authRules = [
-      AuthRule(
-        authStrategy: AuthStrategy.PRIVATE,
-        operations: [
-          ModelOperation.READ,
-          ModelOperation.CREATE
+      amplify_core.AuthRule(
+        authStrategy: amplify_core.AuthStrategy.PRIVATE,
+        operations: const [
+          amplify_core.ModelOperation.READ,
+          amplify_core.ModelOperation.CREATE
         ])
     ];
     
     modelSchemaDefinition.indexes = [
-      ModelIndex(fields: const ["type", "createdAt"], name: "messagesByDate")
+      amplify_core.ModelIndex(fields: const ["type", "createdAt"], name: "messagesByDate")
     ];
     
-    modelSchemaDefinition.addField(ModelFieldDefinition.id());
+    modelSchemaDefinition.addField(amplify_core.ModelFieldDefinition.id());
     
-    modelSchemaDefinition.addField(ModelFieldDefinition.field(
+    modelSchemaDefinition.addField(amplify_core.ModelFieldDefinition.field(
       key: Message.USERID,
       isRequired: true,
-      ofType: ModelFieldType(ModelFieldTypeEnum.string)
+      ofType: amplify_core.ModelFieldType(amplify_core.ModelFieldTypeEnum.string)
     ));
     
-    modelSchemaDefinition.addField(ModelFieldDefinition.field(
+    modelSchemaDefinition.addField(amplify_core.ModelFieldDefinition.field(
       key: Message.USERNAME,
       isRequired: true,
-      ofType: ModelFieldType(ModelFieldTypeEnum.string)
+      ofType: amplify_core.ModelFieldType(amplify_core.ModelFieldTypeEnum.string)
     ));
     
-    modelSchemaDefinition.addField(ModelFieldDefinition.field(
+    modelSchemaDefinition.addField(amplify_core.ModelFieldDefinition.field(
       key: Message.MESSAGE,
       isRequired: true,
-      ofType: ModelFieldType(ModelFieldTypeEnum.string)
+      ofType: amplify_core.ModelFieldType(amplify_core.ModelFieldTypeEnum.string)
     ));
     
-    modelSchemaDefinition.addField(ModelFieldDefinition.field(
+    modelSchemaDefinition.addField(amplify_core.ModelFieldDefinition.field(
       key: Message.TYPE,
       isRequired: true,
-      ofType: ModelFieldType(ModelFieldTypeEnum.string)
+      ofType: amplify_core.ModelFieldType(amplify_core.ModelFieldTypeEnum.string)
     ));
     
-    modelSchemaDefinition.addField(ModelFieldDefinition.field(
+    modelSchemaDefinition.addField(amplify_core.ModelFieldDefinition.field(
       key: Message.CREATEDAT,
       isRequired: true,
-      ofType: ModelFieldType(ModelFieldTypeEnum.string)
+      ofType: amplify_core.ModelFieldType(amplify_core.ModelFieldTypeEnum.string)
     ));
     
-    modelSchemaDefinition.addField(ModelFieldDefinition.nonQueryField(
+    modelSchemaDefinition.addField(amplify_core.ModelFieldDefinition.nonQueryField(
       fieldName: 'updatedAt',
       isRequired: false,
       isReadOnly: true,
-      ofType: ModelFieldType(ModelFieldTypeEnum.dateTime)
+      ofType: amplify_core.ModelFieldType(amplify_core.ModelFieldTypeEnum.dateTime)
     ));
   });
 }
 
-class _MessageModelType extends ModelType<Message> {
+class _MessageModelType extends amplify_core.ModelType<Message> {
   const _MessageModelType();
   
   @override
@@ -275,8 +297,7 @@ class _MessageModelType extends ModelType<Message> {
  * This is an auto generated class representing the model identifier
  * of [Message] in your schema.
  */
-@immutable
-class MessageModelIdentifier implements ModelIdentifier<Message> {
+class MessageModelIdentifier implements amplify_core.ModelIdentifier<Message> {
   final String id;
 
   /** Create an instance of MessageModelIdentifier using [id] the primary key. */
